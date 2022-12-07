@@ -1,0 +1,28 @@
+# CS5200-DatawarehouseETL
+## Motivation
+In this practicum you will extract data from an XML document and then store the data relationally in a SQLite database. That database represents a "transactional" database. Then you will extract data from the transactional database and create an "analytical" database using a star schema in MySQL. Finally, you will query facts from the MySQL analytical database. This will require that you connect to two different databases simultaneously -- a common occurrence in practice.
+
+## Format
+Materials: RStudio or RStudio.cloud; SQLite; MySQL
+
+In Part 1 you create a normalized relational OLTP database and populate it with data from an XML document. In Part 2 you will add to the normalized schema fact tables and turn the normalized schema into a de-normalized schema suitable for OLAP. In Part 3 you'll use the OLAP star/snowflake schema to do some (simple) data mining. The parenthesis contain the maximum number of points that can be earned for that question and an estimate of the time in hours.
+
+## Part 1 Load XML Data into Database
+- Create an R Project named CS5200.PracticumII.LastNameF (where LastName is your last name and F is your first initial, e.g., CS5200.PracticumII.WuX) and then within that project create an R Script (.R file and not a .Rmd Notebook) called LoadXML2DB.LastNameF.R for Part 1; Parts 2 and 3 will be done in different programs.
+- Download the following XML file: pubmed22n0001-tf.xml Links to an external site.. Save the XML files locally in a subfolder named pubmed-tfm-xml inside your project folder, and then inspect the file to familiarize yourself with its content and structure. You might wish to create a subset of the first file for use during development as it will load faster.
+- Create a normalized relational schema that contains the following entities/tables: Articles, Journals, Authors. Use the XML document to determine the appropriate attributes (fields/columns) for the entities (tables). While there may be other types of publications in the XML, you only need to deal with articles in journals. Create appropriate primary and foreign keys. Where necessary, add synthetic surrogate keys. Store all information necessary for Parts 2 and 3. The choice of table structure is up to you.
+- Realize the relational schema in SQLite (use CREATE TABLE statements using R functions; you cannot use {sql} chunks in a R Script). You may not use MySQL for this step.
+- Load, extract, and transform the data from the XML file in the folder and then save the data into the appropriate tables in the database. You cannot (directly and solely) use xmlToDataFrame but instead must parse the XML using a combination of node-by-node tree traversal and XPath. It is not feasible to use XPath to extract all journals, then all authors, etc. as some are missing and won't match up. You will need to iterate through the top-level nodes. While outside the scope of the course, this task could also be done through XSLT. Do not store duplicate authors or journals. For dates, you need to devise a conversion scheme, document your decision, and convert all dates to your chosen encoding scheme. You may wish to create a smaller XML file for testing rather than processing the larger XML file each time you run the code during development. Write R function as needed; structure your code to be readable and maintainable; use proper programming practices and thoroughly comment your code; add your name, course information, date to a header in your script.
+
+## Part 2 Create Star/Snowflake Schema
+- Create a new R Script for Part 2 named LoadDataWarehouse.LastNameF.R.
+- Create a MySQL database using either a local or a cloud MySQL instance. Connect to the database. If you use SQLite for this step, no credit will be awarded for this question.
+- Create and populate a star schema for author facts. Each row in this fact table will represent one author fact. It must include the authors id, author name, number of articles by that author, total number of co-authors across all articles. Load the data from the SQLite Database created in Part 1 and populate the fact table using SQL commands issued from R. Do not load the entire tables from SQLite into R as that does not scale. Use SQL to get the data you need. Note that there is not a single way to create the fact table -- you may use dimension tables or you may collapse the dimensions into the fact table. Remember that the goal of fact tables is to make interactive analytical queries fast through pre-computation and storage -- more storage but better performance. This requires thinking and creativity -- there is not a single best solution. Make sure your code scales -- imagine that your transactional database (the SQLite database) contains hundreds of millions of rows per table -- would your code still work and still performance well? ETL code is not always the fastest but it must scale. This chalk talk Links to an external site.on how to build fact tables and why might help...
+- Using the same approach as above (and in the same R Script), create and populate a star schema for journal facts. Each row in this fact table will represent one journal fact. It must include the journal name, number of articles per year, per quarter, and per month.
+
+## Part 3 Explore and Mine Data
+- Create an R Notebook named AnalyzeData.LastNameF.Rmd within your R Project.
+- In the notebook, use markdown to write a "report" which shows the results of the following analytical queries against your MySQL data warehouse from Part 2 (which might go to some manager as part of a weekly report):
+
+1. Top ten authors with the most publications.
+2. Top journal with the most articles per year.
