@@ -1,0 +1,4 @@
+"0","```sql
+select min(strftime('%Y',publish_date)) as \"Year\"
+from book
+```"

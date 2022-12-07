@@ -1,0 +1,9 @@
+"0","```sql
+select g.genre, a.cnt from
+(select gid, count(*) as cnt 
+from book 
+group by gid
+having cnt >= 3) a
+left join genre g
+on g.gid = a.gid
+```"

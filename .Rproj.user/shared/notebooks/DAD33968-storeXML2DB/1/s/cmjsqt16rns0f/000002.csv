@@ -1,0 +1,5 @@
+"0","```r
+dbWriteTable(dbcon, \"book\", df.book, overwrite = T)
+dbWriteTable(dbcon, \"author\", df.author, overwrite = T)
+dbWriteTable(dbcon, \"genre\", df.genre, overwrite = T)
+```"

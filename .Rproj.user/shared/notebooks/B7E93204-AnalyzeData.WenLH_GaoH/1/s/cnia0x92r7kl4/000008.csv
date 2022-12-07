@@ -1,0 +1,1 @@
+"0","select Title from journalfact where articleperyear = (select max(articleperyear) from journalfact)"

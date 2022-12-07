@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PubmedArticleSet>
+  <PubmedArticle PMID="1">
+    <Article>
+      <Journal>
+        <ISSN IssnType="Print">0006-2944</ISSN>
+        <JournalIssue CitedMedium="Print">
+          <Volume>13</Volume>
+          <Issue>2</Issue>
+          <PubDate>
+            <Year>1975</Year>
+            <Month>Jun</Month>
+          </PubDate>
+        </JournalIssue>
+        <Title>Biochemical medicine</Title>
+        <ISOAbbreviation>Biochem Med</ISOAbbreviation>
+      </Journal>
+      <Language>eng</Language>
+      <ArticleTitle>Formate assay in body fluids: application in methanol poisoning.</ArticleTitle>
+      <AuthorList CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Makar</LastName>
+          <ForeName>A B</ForeName>
+          <Initials>AB</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>McMartin</LastName>
+          <ForeName>K E</ForeName>
+          <Initials>KE</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Palese</LastName>
+          <ForeName>M</ForeName>
+          <Initials>M</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Tephly</LastName>
+          <ForeName>T R</ForeName>
+          <Initials>TR</Initials>
+        </Author>
+      </AuthorList>
+    </Article>
+  </PubmedArticle>
+  <PubmedArticle PMID="2">
+    <Article>
+      <Journal>
+        <ISSN IssnType="Electronic">1090-2104</ISSN>
+        <JournalIssue CitedMedium="Internet">
+          <Volume>66</Volume>
+          <Issue>4</Issue>
+          <PubDate>
+            <Year>1975</Year>
+            <Month>Oct</Month>
+            <Day>27</Day>
+          </PubDate>
+        </JournalIssue>
+        <Title>Biochemical and biophysical research communications</Title>
+        <ISOAbbreviation>Biochem Biophys Res Commun</ISOAbbreviation>
+      </Journal>
+      <Language>eng</Language>
+      <ArticleTitle>Delineation of the intimate details of the backbone conformation of pyridine nucleotide coenzymes in aqueous solution.</ArticleTitle>
+      <AuthorList CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Bose</LastName>
+          <ForeName>K S</ForeName>
+          <Initials>KS</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Sarma</LastName>
+          <ForeName>R H</ForeName>
+          <Initials>RH</Initials>
+        </Author>
+      </AuthorList>
+    </Article>
+  </PubmedArticle>
+  <PubmedArticle PMID="3">
+    <Article>
+      <Journal>
+        <ISSN IssnType="Print">0006-291X</ISSN>
+        <JournalIssue CitedMedium="Print">
+          <Volume>66</Volume>
+          <Issue>4</Issue>
+          <PubDate>
+            <Year>1975</Year>
+            <Month>Oct</Month>
+            <Day>27</Day>
+          </PubDate>
+        </JournalIssue>
+        <Title>Biochemical and biophysical research communications</Title>
+        <ISOAbbreviation>Biochem Biophys Res Commun</ISOAbbreviation>
+      </Journal>
+      <Language>eng</Language>
+      <ArticleTitle>Metal substitutions incarbonic anhydrase: a halide ion probe study.</ArticleTitle>
+      <AuthorList CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Smith</LastName>
+          <ForeName>R J</ForeName>
+          <Initials>RJ</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Bryant</LastName>
+          <ForeName>R G</ForeName>
+          <Initials>RG</Initials>
+        </Author>
+      </AuthorList>
+    </Article>
+  </PubmedArticle>
+  <PubmedArticle PMID="4">
+    <Article>
+      <Journal>
+        <ISSN IssnType="Electronic">1090-2104</ISSN>
+        <JournalIssue CitedMedium="Internet">
+          <Volume>66</Volume>
+          <Issue>4</Issue>
+          <PubDate>
+            <Year>1975</Year>
+            <Month>Oct</Month>
+            <Day>27</Day>
+          </PubDate>
+        </JournalIssue>
+        <Title>Biochemical and biophysical research communications</Title>
+        <ISOAbbreviation>Biochem Biophys Res Commun</ISOAbbreviation>
+      </Journal>
+      <Language>eng</Language>
+      <ArticleTitle>Effect of chloroquine on cultured fibroblasts: release of lysosomal hydrolases and inhibition of their uptake.</ArticleTitle>
+      <AuthorList CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Wiesmann</LastName>
+          <ForeName>U N</ForeName>
+          <Initials>UN</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>DiDonato</LastName>
+          <ForeName>S</ForeName>
+          <Initials>S</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Herschkowitz</LastName>
+          <ForeName>N N</ForeName>
+          <Initials>NN</Initials>
+        </Author>
+      </AuthorList>
+    </Article>
+  </PubmedArticle>
+  <PubmedArticle PMID="5">
+    <Article>
+      <Journal>
+        <ISSN IssnType="Electronic">1090-2104</ISSN>
+        <JournalIssue CitedMedium="Internet">
+          <Volume>66</Volume>
+          <Issue>4</Issue>
+          <PubDate>
+            <Year>1975</Year>
+            <Month>Oct</Month>
+            <Day>27</Day>
+          </PubDate>
+        </JournalIssue>
+        <Title>Biochemical and biophysical research communications</Title>
+        <ISOAbbreviation>Biochem Biophys Res Commun</ISOAbbreviation>
+      </Journal>
+      <Language>eng</Language>
+      <ArticleTitle>Atomic models for the polypeptide backbones of myohemerythrin and hemerythrin.</ArticleTitle>
+      <AuthorList CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Hendrickson</LastName>
+          <ForeName>W A</ForeName>
+          <Initials>WA</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Ward</LastName>
+          <ForeName>K B</ForeName>
+          <Initials>KB</Initials>
+        </Author>
+      </AuthorList>
+    </Article>
+  </PubmedArticle>
+  <PubmedArticle PMID="6">
+    <Article>
+      <Journal>
+        <ISSN IssnType="Print">0006-291X</ISSN>
+        <JournalIssue CitedMedium="Print">
+          <Volume>66</Volume>
+          <Issue>4</Issue>
+          <PubDate>
+            <Year>1975</Year>
+            <Month>Oct</Month>
+            <Day>27</Day>
+          </PubDate>
+        </JournalIssue>
+        <Title>Biochemical and biophysical research communications</Title>
+        <ISOAbbreviation>Biochem Biophys Res Commun</ISOAbbreviation>
+      </Journal>
+      <Language>eng</Language>
+      <ArticleTitle>Studies of oxygen binding energy to hemoglobin molecule.</ArticleTitle>
+      <AuthorList CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Chow</LastName>
+          <ForeName>Y W</ForeName>
+          <Initials>YW</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Pietranico</LastName>
+          <ForeName>R</ForeName>
+          <Initials>R</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Mukerji</LastName>
+          <ForeName>A</ForeName>
+          <Initials>A</Initials>
+        </Author>
+      </AuthorList>
+    </Article>
+  </PubmedArticle>
+  <PubmedArticle PMID="7">
+    <Article>
+      <Journal>
+        <ISSN IssnType="Electronic">1873-2968</ISSN>
+        <JournalIssue CitedMedium="Internet">
+          <Volume>24</Volume>
+          <Issue>16</Issue>
+          <PubDate>
+            <Year>1975</Year>
+            <Month>Aug</Month>
+            <Day>15</Day>
+          </PubDate>
+        </JournalIssue>
+        <Title>Biochemical pharmacology</Title>
+        <ISOAbbreviation>Biochem Pharmacol</ISOAbbreviation>
+      </Journal>
+      <Language>eng</Language>
+      <ArticleTitle>Maturation of the adrenal medulla--IV. Effects of morphine.</ArticleTitle>
+      <AuthorList CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Anderson</LastName>
+          <ForeName>T R</ForeName>
+          <Initials>TR</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Slotkin</LastName>
+          <ForeName>T A</ForeName>
+          <Initials>TA</Initials>
+        </Author>
+      </AuthorList>
+    </Article>
+  </PubmedArticle>
+  <PubmedArticle PMID="8">
+    <Article>
+      <Journal>
+        <ISSN IssnType="Electronic">1873-2968</ISSN>
+        <JournalIssue CitedMedium="Internet">
+          <Volume>24</Volume>
+          <Issue>16</Issue>
+          <PubDate>
+            <Year>1975</Year>
+            <Month>Aug</Month>
+            <Day>15</Day>
+          </PubDate>
+        </JournalIssue>
+        <Title>Biochemical pharmacology</Title>
+        <ISOAbbreviation>Biochem Pharmacol</ISOAbbreviation>
+      </Journal>
+      <Language>eng</Language>
+      <ArticleTitle>Comparison between procaine and isocarboxazid metabolism in vitro by a liver microsomal amidase-esterase.</ArticleTitle>
+      <AuthorList CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Moroi</LastName>
+          <ForeName>K</ForeName>
+          <Initials>K</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Sato</LastName>
+          <ForeName>T</ForeName>
+          <Initials>T</Initials>
+        </Author>
+      </AuthorList>
+    </Article>
+  </PubmedArticle>
+  <PubmedArticle PMID="9">
+    <Article>
+      <Journal>
+        <ISSN IssnType="Print">0006-2952</ISSN>
+        <JournalIssue CitedMedium="Print">
+          <Volume>24</Volume>
+          <Issue>17</Issue>
+          <PubDate>
+            <Year>1975</Year>
+            <Month>Sep</Month>
+            <Day>01</Day>
+          </PubDate>
+        </JournalIssue>
+        <Title>Biochemical pharmacology</Title>
+        <ISOAbbreviation>Biochem Pharmacol</ISOAbbreviation>
+      </Journal>
+      <Language>eng</Language>
+      <ArticleTitle>Radiochemical assay of glutathione S-epoxide transferase and its enhancement by phenobarbital in rat liver in vivo.</ArticleTitle>
+      <AuthorList CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Marniemi</LastName>
+          <ForeName>J</ForeName>
+          <Initials>J</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Parkki</LastName>
+          <ForeName>M G</ForeName>
+          <Initials>MG</Initials>
+        </Author>
+      </AuthorList>
+    </Article>
+  </PubmedArticle>
+  <PubmedArticle PMID="10">
+    <Article>
+      <Journal>
+        <ISSN IssnType="Electronic">1873-2968</ISSN>
+        <JournalIssue CitedMedium="Internet">
+          <Volume>24</Volume>
+          <Issue>17</Issue>
+          <PubDate>
+            <Year>1975</Year>
+            <Month>Sep</Month>
+            <Day>01</Day>
+          </PubDate>
+        </JournalIssue>
+        <Title>Biochemical pharmacology</Title>
+        <ISOAbbreviation>Biochem Pharmacol</ISOAbbreviation>
+      </Journal>
+      <Language>eng</Language>
+      <ArticleTitle>Digitoxin metabolism by rat liver microsomes.</ArticleTitle>
+      <AuthorList CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Schmoldt</LastName>
+          <ForeName>A</ForeName>
+          <Initials>A</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Benthe</LastName>
+          <ForeName>H F</ForeName>
+          <Initials>HF</Initials>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Haberland</LastName>
+          <ForeName>G</ForeName>
+          <Initials>G</Initials>
+        </Author>
+      </AuthorList>
+    </Article>
+  </PubmedArticle>
+  <PubmedArticle PMID="11">
+    <Article>
+      <Journal>
+        <ISSN IssnType="Print">0006-2952</ISSN>
+        <JournalIssue CitedMedium="Print">
+          <Volume>24</Volume>
+          <Issue>18</Issue>
+          <PubDate>
+            <Year>1975</Year>
+            <Month>Sep</Month>
+            <Day>15</Day>
+          </PubDate>
+        </JournalIssue>
+        <Title>Biochemical pharmacology</Title>
+        <ISOAbbreviation>Biochem Pharmacol</ISOAbbreviation>
+      </Journal>
+      <Language>eng</Language>
+      <ArticleTitle>Identification of adenylate cyclase-coupled beta-adrenergic receptors with radiolabeled beta-adrenergic antagonists.</ArticleTitle>
+      <AuthorList CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Lefkowitz</LastName>
+          <ForeName>R J</ForeName>
+          <Initials>RJ</Initials>
+        </Author>
+      </AuthorList>
+    </Article>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -1,0 +1,253 @@
+---
+title: "Connect R to Remote MySQL Instance"
+output: html_notebook
+author: Han Gao & Luhan Wen
+---
+
+## MySQL on AWS
+
+```{r}
+# 1. Library
+library(RMySQL)
+
+# 2. Settings
+db_user <- 'admin'
+db_password <- 'password'
+db_name <- 'ArticleDB'
+db_host <- 'cs5200.cligdkonlz0p.us-east-1.rds.amazonaws.com' # AWS Host
+db_port <- 3306
+
+# 3. Read data from db
+mydb <-  dbConnect(MySQL(), user = db_user, password = db_password,
+                 dbname = db_name, host = db_host, port = db_port)
+```
+
+```{sql connection=mydb}
+drop table if exists incidents
+```
+
+```{sql connection=mydb}
+drop table if exists airports
+```
+
+```{sql connection=mydb}
+drop table if exists conditions
+```
+
+```{sql connection=mydb}
+CREATE TABLE airports (
+    aid INTEGER PRIMARY KEY AUTO_INCREMENT,
+    airportName TEXT,
+    airportCode TEXT,
+    state TEXT
+    );
+```
+
+```{sql connection=mydb}
+CREATE TABLE conditions (
+    cid INTEGER PRIMARY KEY AUTO_INCREMENT,
+    conditionInfo TEXT,
+    explanation TEXT
+    );
+```
+
+```{sql connection=mydb}
+CREATE TABLE incidents (
+    rid INTEGER PRIMARY KEY,
+    date DATE,
+    origin INTEGER,
+    airline TEXT,
+    aircraft TEXT,
+    flightPhase TEXT,
+    altitude TEXT,
+    conditions INTEGER,
+    warning BOOLEAN,
+    FOREIGN KEY (origin)
+      REFERENCES airports (aid)
+    ,
+    FOREIGN KEY (conditions)
+      REFERENCES conditions (cid)
+    );
+```
+
+
+```{r}
+# detach(package:RMySQL)
+#detach(package:sqldf)
+library(sqldf)
+options(sqldf.driver = "SQLite")
+
+fn <- "BirdStrikesData-V2.csv"
+
+df <- read.csv(fn, header = TRUE, stringsAsFactors = FALSE)
+
+df.airports <- sqldf("select 1 as aid, airport as airportName, origin as state from 'df' group by airportName");
+n.airports <- nrow(df.airports)
+df.airports[,1] <- seq(1, n.airports)
+
+df.conditions <- sqldf("select 1 as cid, sky_conditions as conditionInfo from df group by sky_conditions");
+n.conditions <- nrow(df.conditions)
+df.conditions[,1] <- seq(1, n.conditions)
+```
+
+```{r}
+dbWriteTable(mydb, "airports", df.airports, overwrite = F, append = T, row.names = F)
+dbWriteTable(mydb, "conditions", df.conditions, overwrite = F, append = T, row.names = F)
+```
+
+```{r}
+df.incidents <- sqldf("select rid, flight_date as date, 1 as origin, 1 as conditions, airline, aircraft, flight_phase as flightPhase, altitude_ft as altitude, 0 as warning from `df`")
+n.incidents <- nrow(df.incidents)
+for (r in 1:n.incidents) {
+  # rid
+  rid <-  paste0('"', df.incidents$rid[r], '"')
+  
+  # date
+  i_date <- as.Date(df$flight_date[r], format = "%m/%d/%Y %H:%M")
+  i_date <- paste0('"', i_date, '"')
+  
+  # origin
+  origin <- df.airports$aid[which(df.airports$airportName == df$airport[r])]
+  
+  # conditions
+  conditions <- df.conditions$cid[which(df.conditions$conditionInfo == df$sky_conditions[r])]
+  #conditions <- paste0('"', conditions, '"')
+  
+  # airline
+  airline <- df$airline[r]
+  if (is.na(airline)){
+    airline <- 'NULL'
+  }else{
+     airline <- paste0('"', airline, '"')
+  }
+  
+  # aircraft
+  aircraft <- df$aircraft[r]
+  if (is.na(aircraft)){
+    aircraft <- 'NULL'
+  }else{
+     aircraft <- paste0('"',aircraft,'"')
+  }
+  
+  # flightPhase
+  flightPhase <- df$flight_phase[r]
+  if (flightPhase == 'Climb'){
+    flightPhase <- 'takeoff'
+  }else if (flightPhase == 'Approach'){
+    flightPhase <- 'landing'
+  }else if (flightPhase == 'Landing Roll'){
+    flightPhase <- 'landing'
+  }else if (flightPhase == 'Take-off run'){
+    flightPhase <- 'inflight'
+  }else if (flightPhase == 'Descent'){
+    flightPhase <- 'inflight'
+  }else{
+    flightPhase <- 'unknown'
+  }
+    
+  flightPhase <- paste0('"',flightPhase,'"')
+  
+  # altitude
+  altitude <- df$altitude_ft[r]
+  if (is.na(altitude)){
+    altitude <- 0
+  }else{
+     altitude <- paste0('"',altitude,'"')
+  }
+  
+  # warning
+  if (df$pilot_warned_flag[r] == "Y"){
+    waring <- TRUE
+  }else{
+    waring <- FALSE
+  }
+  
+  sqlcmd<-paste0('INSERT INTO incidents 
+          (rid, date, origin, conditions, airline, aircraft, flightPhase, altitude, warning) VALUES
+          (', rid , ',' , i_date , ',' , origin, ',', conditions, ',', airline, ',', aircraft,
+          ',', flightPhase, ',', altitude, ',', waring,')')
+
+  dbSendQuery(mydb, sqlcmd)
+}
+
+```
+
+```{sql connection=mydb}
+select * from airports;
+```
+
+```{sql connection=mydb}
+select * from conditions;
+```
+
+```{sql connection=mydb}
+delete from incidents where airline = 'MILITARY';
+```
+
+```{sql connection=mydb}
+select * from incidents
+```
+
+```{sql connection=mydb}
+/* Question 4 */
+SELECT airline, total_incidents
+FROM (select airline, count(*) as total_incidents from incidents group by airline) as a
+order by total_incidents DESC
+limit 10;
+```
+
+```{sql connection=mydb}
+/* Question 5 */
+Select flightPhase, count(*) as total_incidents
+from incidents
+group by flightPhase
+having count(*) > (select count(*) / COUNT( DISTINCT flightPhase) from incidents);
+```
+
+```{sql connection=mydb}
+/* Question 6 */
+select month, count(*) as total_incidents
+from (select MONTH(date) as month from incidents) as a
+group by month
+order by total_incidents desc
+limit 1
+```
+
+```{r}
+library(sqldf)
+rs<-dbGetQuery(mydb, "select year, count(*) as total_incidents
+               from (select YEAR(date) as year from incidents) as a
+               group by year
+               having year >= 2005 AND year <= 2011")
+attach(rs)
+plot(year, total_incidents, main="incidents with year",
+   xlab="year ", ylab="total_incidents")
+```
+
+```{sql connection=mydb}
+CREATE PROCEDURE addIncident (
+    IN I_rid INTEGER,
+    IN I_date DATE,
+    IN I_origin INTEGER,
+    IN I_airline TEXT,
+    IN I_aircraft TEXT,
+    IN I_flightPhase TEXT,
+    IN I_altitude TEXT,
+    IN I_conditions INTEGER,
+    IN I_warning BOOLEAN)
+BEGIN
+  INSERT INTO incidents (rid, date, origin, airline, aircraft, flightPhase, altitude, conditions, warning)
+  Values (I_rid, I_date, I_origin, I_airline, I_aircraft, I_flightPhase, I_altitude, I_conditions, I_warning);
+END
+```
+
+```{sql connection=mydb}
+CALL addIncident(1003,'2021-11-23', 123, 'US AIRWAYS*', 'B-737-400','Climb', '859', '1', false);
+```
+
+## Disconnect from Database
+
+```{r}
+dbDisconnect(mydb)
+```
+

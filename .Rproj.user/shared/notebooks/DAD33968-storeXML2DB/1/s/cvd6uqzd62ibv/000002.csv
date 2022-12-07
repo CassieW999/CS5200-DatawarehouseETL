@@ -1,0 +1,9 @@
+"0","```sql
+select genre, numofbook, avgPrice
+from genre g
+inner join(
+select gid, count(*) as numofbook, AVG(price) as avgPrice
+from book
+group by gid) a
+on a.gid == g.gid
+```"

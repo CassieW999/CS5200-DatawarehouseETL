@@ -1,0 +1,30 @@
+---
+title: "R Notebook"
+output: html_notebook
+author: Luhan Wen
+---
+
+
+```{r}
+install.packages('XML')
+```
+
+```{r}
+library(XML)
+
+xmlFile <- "log.xml"
+xmlObj <- xmlParse(xmlFile)
+
+# validate the xml result with total visit count, should return 6
+xpathEx <- "count(/log/visit)"
+visit <- xpathSApply(xmlObj, xpathEx, xmlValue)
+cat(visit)
+```
+
+# count how many visits are there for the page with pid 10, should return 2
+```{r}
+xpathEx <- "count(/log/visit/page[@pid='10'])"
+count <- xpathSApply(xmlObj, xpathEx, xmlValue)
+cat(count)
+```
+

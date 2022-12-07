@@ -1,0 +1,6 @@
+"0","```sql
+CREATE TABLE genre (
+    gid INTEGER PRIMARY KEY,
+    genre VARCHAR(255)
+    );
+```"

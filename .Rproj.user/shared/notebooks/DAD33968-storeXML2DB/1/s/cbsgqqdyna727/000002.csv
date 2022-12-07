@@ -1,0 +1,7 @@
+"0","```r
+library(RSQLite)
+
+fpath = \"~\"
+dbfile = \"db.sqlite\"
+dbcon <- dbConnect(RSQLite::SQLite(), \"db.db\")
+```"

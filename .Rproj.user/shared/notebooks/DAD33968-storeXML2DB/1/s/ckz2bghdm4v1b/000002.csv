@@ -1,0 +1,7 @@
+"0","```sql
+select b.title, a.name as author, price
+from book b
+left join author a
+on b.authorid = a.authorid
+where price <= 0.8 * (select avg(price) from book) or price >= 1.2 * (select avg(price) from book)
+```"

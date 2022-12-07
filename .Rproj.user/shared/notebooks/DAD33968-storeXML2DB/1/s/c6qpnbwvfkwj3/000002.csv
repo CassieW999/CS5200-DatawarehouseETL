@@ -1,0 +1,7 @@
+"0","```sql
+select b.*, a.name, g.genre from book b
+left join author a
+on a.authorid = b.authorid
+left join genre g
+on g.gid = b.gid
+```"

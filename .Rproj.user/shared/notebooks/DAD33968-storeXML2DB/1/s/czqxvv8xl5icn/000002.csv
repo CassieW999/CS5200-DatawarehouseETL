@@ -1,0 +1,12 @@
+"0","```sql
+CREATE TABLE book (
+    id VARCHAR(255) PRIMARY KEY,
+    authorid INTEGER,
+    title VARCHAR(255),
+    edition INTEGER,
+    gid INTEGER,
+    price VARCHAR(255),
+    publish_date DATE,
+    description TEXT
+    );
+```"

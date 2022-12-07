@@ -1,0 +1,6 @@
+"0","```sql
+CREATE TABLE author (
+    authorid INTEGER PRIMARY KEY,
+    name VARCHAR(255)
+    );
+```"
