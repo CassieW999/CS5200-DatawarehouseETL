@@ -98,19 +98,32 @@ for (r in 1:nrow(df.journal)) {
     quater <- ""
     next
   }
-  print(month)
   quater <- ceiling(as.numeric(month) / 3)
   month <- paste0(year, df.journal$Month[r]) 
   quaternew <- paste0(year, quater)
   df.journal$Month[r] <- month
   df.journal$Quater[r] <- quaternew
 }
+
 dbWriteTable(mydb, "journalDim", df.journal, overwrite = T)
 
-table2 <- dbGetQuery(mydb, "select c.ISSN, Title, month, articlepermonth,quater, articleperquarter, year,  articleperyear from 
-                  (select JournalID, ISSN, Title, month, count(*) as articlepermonth from journalDim group by ISSN, month) c 
-                  left join (select JournalID, ISSN, quater, count(*) as articleperquarter from journalDim group by ISSN, quater) b on c.JournalID = b.JournalID
-                  left join (select JournalID, ISSN, Year, count(*) as articleperyear from journalDim group by ISSN, Year) a on a.JournalID = c.JournalID;")
+montable <- dbGetQuery(mydb, "select ISSN, month, quater, year, count(*) as articlepermonth from journalDim group by ISSN,  month")
+quatertable <- dbGetQuery(mydb, "select ISSN, quater, count(*) as articleperquarter from journalDim group by ISSN, quater")
+yeartable <- dbGetQuery(mydb, "select ISSN, year, count(*) as articleperyear from journalDim group by ISSN, year")
+
+dbWriteTable(mydb, "monthTable", montable, overwrite = T)
+dbWriteTable(mydb, "quatertable", quatertable, overwrite = T)
+dbWriteTable(mydb, "yeartable", yeartable, overwrite = T)
+
+for (r in 1:nrow(montable)){
+  sql <- paste0("select articleperquarter from quatertable where quater = ", montable$quater[r], " and ISSN = '", montable$ISSN[r], "'")
+  quaterCount <- dbGetQuery(mydb, paste0(sql))
+  sql2 <- paste0("select articleperyear from yeartable where year = ", montable$year[r], " and ISSN = '", montable$ISSN[r], "'")
+  yearCount <- dbGetQuery(mydb, sql2)
+  
+  montable$quaterCount[r] <- quaterCount$articleperquarter[1]
+  montable$yearCount[r] <- yearCount$articleperyear[1]
+}
 
 dbWriteTable(mydb, "journalfact", table2, overwrite = T)
 
